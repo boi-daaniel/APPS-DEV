@@ -1,11 +1,12 @@
-﻿double price = 2000 ;
 double discountRate = 0.10;
 
-Console.WriteLine("Enter value for price: 2000");
+Console.Write("Enter value for price: ");
+double price = Convert.ToInt32(Console.ReadLine());
+
 if (price > discountRate)
 {
     double discount = price * discountRate;
-    Console.WriteLine("Discount is: " + discount);
+    Console.WriteLine("Discount is: " + discount.ToString("N2"));
 }
 else 
 {
