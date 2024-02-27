@@ -1,17 +1,24 @@
-﻿int TotalBags = 52;
-double bagPrice = 5.50;
-double largePrice = 3.00;
-double mediumPrice = 2.50;
-double smallPrice = 2.00;
-int[] amount = {2, 1, 1};
+using System.Globalization;
 
-double result = TotalBags * bagPrice;
-double totalResult = result + (largePrice * amount[0]) + (mediumPrice * amount[1]) + (smallPrice * amount[2]);
+namespace Sales
+{
+    public partial class Preview : Form
+    {
+        public Preview()
+        {
+            InitializeComponent();
+        }
 
+        private void Preview_Load(object sender, EventArgs e)
+        {
 
-Console.WriteLine("Number of Bags Ordered: " + TotalBags);
-Console.WriteLine("Boxes Used: ");
-Console.WriteLine("Large - " + amount[0]);
-Console.WriteLine("Medium - " + amount[1]);
-Console.WriteLine("Small - " + amount[2]);
-Console.WriteLine("Your total cost is: $" + totalResult);
+        }
+
+        public void setValues(double commission, string percent, double totalAmount) 
+        {
+            lbl1.Text = percent;
+            lbl2.Text = "Php " + commission.ToString("N2");
+            lbl3.Text = "Php " + totalAmount.ToString("N2");
+        }
+    }
+}
