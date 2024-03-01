@@ -7,11 +7,6 @@ namespace Sales
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             double text1 = Convert.ToDouble(txt1.Text);
