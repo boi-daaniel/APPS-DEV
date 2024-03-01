@@ -1,49 +1,19 @@
+using System.Globalization;
+
 namespace Sales
 {
-    public partial class Sales : Form
+    public partial class Preview : Form
     {
-        public Form1()
+        public Preview()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void setValues(double commission, string percent, double totalAmount) 
         {
-            double text1 = Convert.ToDouble(txt1.Text);
-            double text2 = Convert.ToDouble(txt2.Text);
-            double text3 = Convert.ToDouble(txt3.Text);
-
-            double TotalSale = text1 + text2 + text3;
-            txt4.Text = TotalSale.ToString();
-
-            double commission = 0;
-            String percent = "";
-
-            if (chk1.Checked)
-            {
-                commission = TotalSale * 0.5;
-                percent = "50%";
-            }
-            else if (chk2.Checked)
-            {
-                commission = TotalSale * 0.1;
-                percent = "10%";
-            }
-            else if (chk3.Checked)
-            {
-                commission = TotalSale * 0.15;
-                percent = "15%";
-            }
-            else
-            {
-                percent = "No Percentage Selected";
-            }
-
-            double totalAmount = TotalSale + commission;
-
-            Preview result = new Preview();
-            result.setValues(commission, percent, totalAmount);
-            result.Show();
+            lbl1.Text = percent;
+            lbl2.Text = "Php " + commission.ToString("N2");
+            lbl3.Text = "Php " + totalAmount.ToString("N2");
         }
     }
 }
