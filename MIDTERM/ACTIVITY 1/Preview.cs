@@ -1,17 +1,65 @@
-﻿int TotalBags = 52;
-double bagPrice = 5.50;
-double largePrice = 3.00;
-double mediumPrice = 2.50;
-double smallPrice = 2.00;
-int[] amount = {2, 1, 1};
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-double result = TotalBags * bagPrice;
-double totalResult = result + (largePrice * amount[0]) + (mediumPrice * amount[1]) + (smallPrice * amount[2]);
+namespace Midterm_Activity_1
+{
+    public partial class Preview : Form
+    {
+        private char Operator;
+        private double Operand;
+        private double total;
+        public Preview(char Operator, double Operand)
+        {
+            InitializeComponent();
+            this.Operator = Operator;
+            this.Operand = Operand;
+        }
 
-
-Console.WriteLine("Number of Bags Ordered: " + TotalBags);
-Console.WriteLine("Boxes Used: ");
-Console.WriteLine("Large - " + amount[0]);
-Console.WriteLine("Medium - " + amount[1]);
-Console.WriteLine("Small - " + amount[2]);
-Console.WriteLine("Your total cost is: $" + totalResult);
+        public void DoNextOperation(char Operator, double Operand)
+        {
+                switch (Operator)
+                {
+                    case '+':
+                        total += Operand;
+                        listResult.Items.Add($"{Operator} {Operand}");
+                        listResult.Items.Add($"result so far is {total.ToString("N1")}");
+                        break;
+                    case '-':
+                        total -= Operand;
+                        listResult.Items.Add($"{Operator} {Operand}");
+                        listResult.Items.Add($"the result so far is {total.ToString("N1")}");
+                        break;
+                    case '*':
+                        total *= Operand;
+                        listResult.Items.Add($"{Operator} {Operand}");
+                        listResult.Items.Add($"the result so far is {total.ToString("N1")}");
+                        break;
+                    case '/':
+                        total /= Operand;
+                        listResult.Items.Add($"{Operator} {Operand}");
+                        listResult.Items.Add($"the result so far is {total.ToString("N1")}");
+                        break;
+                    case '^':
+                        
+                    total = Math.Pow(total, Operand);
+                        listResult.Items.Add($"{Operator} {Operand}");
+                        listResult.Items.Add($"the result so far is {total.ToString("N1")}");
+                        break;
+                    case 'q':
+                        listResult.Items.Add($"{Operator} {Operand}");
+                        listResult.Items.Add($"Final result is {total.ToString("N1")}");
+                        break;
+                    default:
+                        listResult.Items.Add("Invalid");
+                        break;
+                }
+        }
+    }
+}
