@@ -1,17 +1,37 @@
-﻿int TotalBags = 52;
-double bagPrice = 5.50;
-double largePrice = 3.00;
-double mediumPrice = 2.50;
-double smallPrice = 2.00;
-int[] amount = {2, 1, 1};
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-double result = TotalBags * bagPrice;
-double totalResult = result + (largePrice * amount[0]) + (mediumPrice * amount[1]) + (smallPrice * amount[2]);
+namespace Midterm_Activity_1
+{
+    public partial class Form1 : Form
+    {
+        private Preview preview;
 
+        public Form1()
+        {
+            InitializeComponent();
+        }
 
-Console.WriteLine("Number of Bags Ordered: " + TotalBags);
-Console.WriteLine("Boxes Used: ");
-Console.WriteLine("Large - " + amount[0]);
-Console.WriteLine("Medium - " + amount[1]);
-Console.WriteLine("Small - " + amount[2]);
-Console.WriteLine("Your total cost is: $" + totalResult);
+        public (char Operator, double Operand) scanData()
+        {
+            char Operator = Convert.ToChar(txtOperator.Text);
+            double Operand = Convert.ToDouble(txtOperand.Text);
+
+            return (Operator, Operand);
+        }   
+
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            (char Operator, double Operand) = scanData();
+            if (preview == null || preview.IsDisposed)
+            {
+                preview = new Preview(Operator, Operand);
+                preview.DoNextOperation(Operator, Operand);
+                preview.Show();
+            }
+            else
+            {
+                preview.DoNextOperation(Operator, Operand);
+            }
+        }
+    }
+}
