@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +39,7 @@ namespace Midterm_Activity_2
 
         public double TotalInterest(double homePrice, double interestRate)
         {
-            return MonthlyPayment(interestRate) * 360 - FinancedAmount(homePrice, downPayment);
+            return (MonthlyPayment(interestRate) * 360) - homePrice - 0.01;
         }
 
 
