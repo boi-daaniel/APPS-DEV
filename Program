@@ -1,0 +1,14 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        NameHandler handler = new NameHandler();
+        handler.GetNames();
+        handler.DisplayDuplicateCount();
+        handler.DisplayConsonantCount();
+        handler.DisplayReversedNames();
+        handler.DisplaySortedReversedNames();
+    }
+}
